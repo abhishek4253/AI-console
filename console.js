@@ -30,3 +30,31 @@ function startConsole() {
 
 console.log('AI Console - Type "exit" to quit');
 startConsole();
+// ... (previous code)
+
+function startConsole() {
+  rl.question('You: ', (userInput) => {
+    if (userInput.toLowerCase() === 'exit') {
+      rl.close();
+    } else if (userInput.toLowerCase() === 'help') {
+      console.log('AI: You can type "exit" to quit or ask me anything!');
+      startConsole();
+    } else {
+      const response = aiResponse(userInput);
+      console.log(`AI: ${response}`);
+      startConsole();
+    }
+  });
+}
+
+// New feature: a simple calculator
+function calculate(expression) {
+  try {
+    return eval(expression);
+  } catch (error) {
+    return 'Error in calculation';
+  }
+}
+
+console.log('AI Console - Type "exit" to quit');
+startConsole();
